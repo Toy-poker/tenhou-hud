@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "天鳳HUD",
+  "version": "0.1",
+  "description": "対戦相手の統計をHUD表示",
+  "permissions": ["activeTab"],
+  "host_permissions": [
+    "https://tenhou.net/*",
+    "https://nodocchi.moe/*"
+  ],
+"content_scripts": [
+    {
+      "matches": ["https://tenhou.net/3/*", "https://tenhou.net/4/*"],
+      "js": ["injector.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": ["https://tenhou.net/3/*", "https://tenhou.net/4/*"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
